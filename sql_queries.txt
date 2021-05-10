@@ -1,0 +1,47 @@
+SQL Queries:-
+
+1. Admin table
+CREATE TABLE admin_registration (
+    admin_id int PRIMARY KEY AUTO_INCREMENT,
+    fname varchar(30) NOT Null,
+    lname varchar(30),
+    contact_no varchar(10),
+    address varchar(100),
+    email varchar(30),
+    pass varchar(30),
+    reg_date DATE DEFAULT CURRENT_DATE
+);
+
+2. User table
+CREATE TABLE user_registration (
+    user_id int PRIMARY KEY AUTO_INCREMENT,
+    fname varchar(30) NOT Null,
+    lname varchar(30),
+    contact_no varchar(10),
+    address varchar(100),
+    email varchar(30),
+    pass varchar(30),
+    reg_date DATE DEFAULT CURRENT_DATE
+);
+
+3. Product table
+CREATE TABLE products(
+    product_id int PRIMARY KEY AUTO_INCREMENT,
+    product_name varchar(30),
+    product_price float,
+    product_cat varchar(30),
+    product_desc text,
+    product_sales int
+);
+
+4. Order table
+CREATE TABLE Orders(
+    order_id int PRIMARY KEY AUTO_INCREMENT,
+    product_id int NOT NULL,
+    user_id int NOT NULL,
+    order_date DATE DEFAULT CURRENT_TIMESTAMP,
+    order_amt float,
+    order_address text,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id),
+    FOREIGN KEY (user_id) REFERENCES user_registration(user_id)
+)
